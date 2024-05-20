@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exchange Platform</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+  <script>
+    // Redirect to auth.html if gravatar has not been fetched
+    if (localStorage.getItem('gravatarFetched') !== 'true') {
+        window.location.href = 'auth.html';
+    }
+  </script>
+</head>
+<body>
+  
+  <header>
+      <div class="left-menu">
+         <div class="logo">
+            <img src="images/Logomark.png" alt="" srcset="">
+            <span>
+               Sisyphus
+            </span>
+         </div>
+         <div class="divider"></div>
+         <nav id="navLinks">
+           <i class="fa fa-times" onclick="hideMenu()"></i>
+           <ul>
+             <li><a href="#">Exchange</a></li>
+             <li><a href="#">Wallet</a></li>
+             <li><a href="profile.html">Roqqu Hub</a></li>
+             <li class="logout"><a href="#" id="nav-logout-button">Log out</a></li>
+           </ul>
+         </nav>
+      </div>
+      <div class="right-menu">
+         <div class="profile" id="profile-section">
+            <!-- Profile section will be updated by JavaScript -->
+            <!-- <i class="fa fa-user-circle" aria-hidden="true"></i>
+            <span>Profile</span>
+            <i class="fa fa-angle-right" aria-hidden="true"></i> -->
+         </div>
+         <div id="profile-dropdown" class="dropdown-content">
+            <!-- Dropdown content will be inserted by JavaScript -->
+         </div>
+         <div class="icon">
+            <i class="fa fa-globe " aria-hidden="true"></i>
+         </div>
+         <div class="icon">
+            <i class="fa fa-sign-out "  id="header-logout-button"></i>
+         </div>
+      </div>
+    <i class="fa fa-bars" onclick="showMenu()"></i>
+  </header>
+  
+  <main id="main-content">
+    <div class="chart-list">
+      <div class="chart">
+         <div id="chart-interval-buttons"></div>
+         <div id="chart-container" class="chart-container"></div>
+       </div>
+       <div class="trading-pairs">
+         <h2>Trading Pairs</h2>
+         <ul id="trading-pairs-list">
+           <!-- Trading pairs will be listed here -->
+         </ul>
+       </div>
+    </div>
+    <div class="order-book">
+      <div class="order-book-title">Order Book</div>
+      <div class="order-book-content">
+        <div class="order-book-bids">
+          <div class="order-book-header">
+            <span>Price</span>
+            <span>Amount</span>
+            <span>Total</span>
+          </div>
+          <div class="order-book-entries" id="bids">
+            <!-- Buy orders will be dynamically inserted here -->
+          </div>
+        </div>
+        <div class="order-book-asks">
+          <div class="order-book-header">
+            <span>Price</span>
+            <span>Amount</span>
+            <span>Total</span>
+          </div>
+          <div class="order-book-entries" id="asks">
+            <!-- Sell orders will be dynamically inserted here -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="order-section">
+      <h2>Place Order</h2>
+     <div class="forms">
+       <form id="buy-form">
+         <input type="text" id="buy-price" placeholder="Price">
+         <input type="text" id="buy-amount" placeholder="Amount">
+         <input type="text" id="buy-total" placeholder="Total" readonly>
+         <button type="submit">Buy</button>
+       </form>
+       <form id="sell-form">
+         <input type="text" id="sell-price" placeholder="Price">
+         <input type="text" id="sell-amount" placeholder="Amount">
+         <input type="text" id="sell-total" placeholder="Total" readonly>
+         <button type="submit">Sell</button>
+       </form>
+     </div>
+    </section>
+  
+
+  <footer>
+    <p>&copy; 2024 Exchange Platform</p>
+    <div class="social-media">
+      <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+    </div>
+    <a class="contact" href="#">Contact</a>
+  </footer>
+</main>
+  <script>
+    var navLinks = document.getElementById("navLinks");
+
+    function showMenu(){
+       navLinks.style.right = "0";
+    }
+    function hideMenu(){
+       navLinks.style.right = "-200px";
+    }
+
+    const navLogoutButton = document.getElementById('nav-logout-button');
+  const headerLogoutButton = document.getElementById('header-logout-button');
+
+  function handleLogout() {
+    localStorage.removeItem('gravatarFetched');
+    localStorage.removeItem('profile');
+    window.location.href = 'auth.html';
+  }
+
+  navLogoutButton.addEventListener('click', handleLogout);
+  headerLogoutButton.addEventListener('click', handleLogout);
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const profileSection = document.getElementById('profile-section');
+        const profileDropdown = document.getElementById('profile-dropdown');
+        const profile = JSON.parse(localStorage.getItem('profile'));
+
+        if (profile) {
+            const { email, githubUsername, repos } = profile;
+            const hash = CryptoJS.MD5(email.trim().toLowerCase()).toString();
+            const gravatarUrl = `https://www.gravatar.com/avatar/${hash}?s=200`;
+
+            let profileHTML = `
+                <i class="fa fa-user-circle" aria-hidden="true" id="user-icon"></i>
+                <span>${email}</span>
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            `;
+
+            // if (githubUsername) {
+            //     profileHTML += `
+            //       <i class="fa fa-github" aria-hidden="true"></i> 
+            //       <span>${githubUsername}</span>             
+            //       <i class="fa fa-angle-right" aria-hidden="true"></i>
+            //   `;
+            // }
+
+            profileSection.innerHTML = profileHTML;
+
+            // Check if the Gravatar image exists
+            const img = new Image();
+            img.src = gravatarUrl;
+            img.onload = function() {
+                // Image exists, replace the user icon with the Gravatar image
+                const userIcon = document.getElementById('user-icon');
+                userIcon.style.display = 'none';
+                const gravatarImage = `<img class="fa" src="${gravatarUrl}" alt="Gravatar" id="gravatar-image">`;
+                profileSection.innerHTML = gravatarImage + profileSection.innerHTML;
+            };
+            img.onerror = function() {
+                // Image does not exist, do nothing (user icon remains visible)
+            };
+            
+            // Populate the dropdown
+            let dropdownHTML = `
+                <div class="dropdown-item">
+                   <div class="prof">
+                    <img src="${gravatarUrl}" alt="Profile Image" class="profile-img">
+                    <span>${email}</span>
+                   </div> 
+                </div>
+            `;
+            
+            // if (githubUsername) {
+            //     dropdownHTML += `
+            //         <div class="dropdown-item"><strong>GitHub Username:</strong> ${githubUsername}</div>
+            //     `;
+            // }
+
+            if (repos) {
+                const reposList = repos.map(repo => `<li>${repo}</li>`).join('');
+                dropdownHTML += `
+                    <div class="dropdown-item"><strong>Repositories:</strong>
+                    <ul>${reposList}</ul>
+                    </div>
+                `;
+            }
+
+            profileDropdown.innerHTML = dropdownHTML;
+        }
+
+        // Toggle the dropdown visibility
+        profileSection.addEventListener('click', function() {
+            profileDropdown.classList.toggle('show');
+        });
+
+        // Close the dropdown if clicked outside
+        window.addEventListener('click', function(event) {
+            if (!profileSection.contains(event.target)) {
+                profileDropdown.classList.remove('show');
+            }
+        });
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

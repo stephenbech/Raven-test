@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">Exchange</div>
+    <nav id="navLinks">
+      <i class="fa fa-times" onclick="hideMenu()"></i>
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="#">Markets</a></li>
+        <li><a href="#">Wallet</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+    <i class="fa fa-bars" onclick="showMenu()"></i>
+  </header>
+
+  <main>
+    <div id="auth-screen">
+      <h1>Fetch Your Gravatar</h1>
+      <input type="email" id="email-input" placeholder="Enter your email">
+      <button id="fetch-and-proceed">Fetch Gravatar and Proceed</button>
+      <div id="message-display"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Exchange Platform</p>
+    <div class="social-media">
+      <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+    </div>
+    <a class="contact" href="#">Contact</a>
+  </footer>
+
+  <script>
+    var navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+      navLinks.style.right = "0";
+    }
+
+    function hideMenu() {
+      navLinks.style.right = "-200px";
+    }
+  </script>
+  <script src="auth.js"></script>
+</body>
+</html>
