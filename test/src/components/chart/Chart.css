@@ -1,0 +1,92 @@
+.chart-wrapper {
+   display: flex;
+   flex-direction: column;
+   /* align-items: center; */
+   flex: 1;
+   background-color: #20252B;
+   /* margin-top: 10px; */
+   /* padding: 30px; */
+   border-radius: 8px;
+   max-width: 800px;
+ }
+
+ 
+ 
+ .chart-interval-buttons {
+   margin-bottom: 10px;
+   display: flex;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    text-align: center;
+    color: #A7B1BC;
+    align-items: center;
+ }
+ 
+ .chart-interval-buttons button {
+   background-color: transparent;
+   color: #A7B1BC;
+   border: none;
+   padding: 6px 12px 6px 12px;
+   gap: 10px;
+   margin: 0 5px;
+   width: 40px;
+   height: 28px;
+   border-radius: 100px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+   text-align: center;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+ 
+ .chart-interval-buttons button:hover {
+   background-color: #555C63;
+   color: #ffffff;
+ }
+ 
+ .chart-container {
+   width: 100%;
+   
+   max-width: 800px;
+   /* height: 400px; */
+ }
+ 
+ .dividers{
+  width: 1px;
+  height: 25px;
+  border-radius: 1px;
+  background-color: #EAF0FE;
+  margin: 0 10px;
+ }
+
+ @media (max-width: 769px) {
+  .chart-wrapper{
+    /* display: none; */
+    width: 350px;
+  }
+  .chart-interval-buttons{
+  
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    
+  }
+
+  .chart-time{
+    margin-top: 20px;
+    width: auto;
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .top-info2 {
+    
+  }
+
+  .info-div {
+    
+  }
+ }

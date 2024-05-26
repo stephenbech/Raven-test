@@ -1,0 +1,135 @@
+.open-wrapper{
+   display: flex;
+   width: 100;
+   background-color: #20252B;
+   margin-top: 10px;
+   padding: 30px;
+   border-radius: 8px;
+   
+   height: 531px;
+}
+
+.open-list{
+   border-radius: 10px;
+   padding: 2px;
+   height: 32px;
+   width: 640px;
+   background-color: #00000029;
+   border: none;
+   outline: none;
+   display: flex;
+   justify-content: space-between;
+}
+
+.open-list .history {
+   width: 157.5px;
+   background-color: transparent;
+   border: none;
+   color: #A7B1BC;
+   font-size: 12px;
+   font-weight: 500;
+   line-height: 16px;
+   text-align: center;
+   cursor: pointer;
+ 
+ }
+ 
+.open-list .position {
+   width: 159px;
+   background-color: #21262C;
+   border: none;
+   border-radius: 8px;
+   color: #fff;
+   font-size: 12px;
+   font-weight: 500;
+   line-height: 16px;
+   text-align: center;
+ }
+
+ .open-content{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 1090px;
+   height: 400px;
+   background-color: #20252B;
+   margin-top: 10px;
+   padding: 30px;
+ }
+
+ .open-content .title{
+   color: #fff;
+   font-size: 24px;
+   font-weight: 500;
+   line-height: 32px;
+   text-align: center;
+
+ }
+
+ .open-content .content{
+   /* width: 378px; */
+   font-size: 15px;
+   font-weight: 500;
+   line-height: 24px;
+   text-align: center;
+   color: #A7B1BC;
+ }
+
+ .opened{
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ .opener{
+   justify-content: center;
+   /* align-items: center; */
+   display: flex;
+   flex-direction: column;
+ }
+
+ @media (max-width: 768px) {
+   .open-wrapper{
+      /* width: 350px; */
+      border-radius: 0px;
+      padding: 10px;
+   }
+   .open-list {
+      margin-top: 20px;
+      
+      display: flex;
+      overflow-x: auto;
+      white-space: nowrap;
+      /* display: none; */
+    }
+    .opener{
+      width: 100%;
+    }
+  
+    .over {
+      /* width: 350px; */
+      display: flex;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+   .open-content{
+      width: 300px;
+      /* display: none; */
+   }
+
+   .open-content .title{
+      font-size: 18px;
+   }
+
+   .open-content .content{
+      width: 300px;
+      font-size: 14px;
+   }
+ }
+
+ @media (min-width: 768px) and (max-width: 1550px) {
+   .opener{
+      width: 100%;
+   }
+ }

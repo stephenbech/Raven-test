@@ -1,0 +1,207 @@
+header {
+   background: transparent;
+   color: white;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 15px 30px;
+   border-bottom: 1px solid #32383F;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ }
+
+ header .left-menu {
+  display: inline-flex;
+  gap: 20px;
+ }
+
+ header .divider{
+   width: 1px;
+   height: 40px;
+   background-color: #A7B1BC;
+   opacity: 0.6;
+   display: block;
+ }
+ 
+ header .logo {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   gap: 8px;
+   width: 121px;
+   height: 34px;
+ }
+ 
+ header .logo span {
+   align-self: center;
+   margin-right: 10px;
+   font-size: 20px;
+   font-weight: 500;
+ }
+ 
+ header nav {
+   display: flex;
+   align-items: center;
+ }
+ 
+ header nav ul {
+   list-style: none;
+   display: flex;
+   margin: 0;
+   padding: 0;
+ }
+ 
+ header nav ul li {
+   margin: 0 20px;
+ }
+ 
+ header nav ul li a {
+   color: #A7B1BC;
+   text-decoration: none;
+   font-size: 14px;
+   font-weight: 500;
+   line-height: 16px;
+   transition: color 0.3s;
+ }
+
+ header nav ul .active a  {
+   color: #fff !important;
+ }
+ 
+ header nav ul li a:hover {
+   color: #feffff;
+ }
+ 
+ header nav ul li a::after {
+   content: '';
+   width: 0%;
+   height: 2px;
+   background: #fff;
+   display: block;
+   margin: auto;
+   transition: 0.5s;
+ }
+
+ .icon{
+  display: flex;
+ }
+
+ .logout{
+  display: none;
+ }
+ 
+ header nav ul li a:hover::after {
+   width: 100%;
+ }
+ 
+ header .fa {
+   display: none;
+ }
+
+ header .right-menu{
+   display: inline-flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 20px;
+ }
+
+ header .right-menu .fa, .logout2{
+   display: inline;
+   align-self: center;
+   font-size: 28px;
+
+ }
+
+ 
+ header input#search-bar {
+   padding: 10px;
+   font-size: 16px;
+   border-radius: 5px;
+   border: 1px solid #ccc;
+ }
+
+ 
+ .countries .prof{
+  display: flex;
+  align-items: center;
+  height: 58px;
+  gap: 10px;
+  padding: 15px 16px 15px 16px;
+  cursor: pointer;
+font-size: 14px;
+font-weight: 700;
+line-height: 20px;
+text-align: left;
+
+}
+
+
+ .countries  .prof:hover {
+  background-color: #262B31;
+}
+.countries  .prof:first-child:hover {
+  background-color: #262B31;
+  border-radius: 24px 24px 0px  0px ;
+}
+.countries  .prof:last-child:hover {
+  background-color: #262B31;
+  border-radius: 0px  0px 24px 24px ;
+}
+
+
+ @media (max-width: 768px) {
+   header nav {
+      position: fixed;
+      background: #1a202c;
+      height: 100vh;
+      width: 200px;
+      top: 0;
+      right: -200px;
+      text-align: left;
+      z-index: 50;
+      transition: 1s;
+      flex-direction: column;
+    }
+  
+    header nav ul {
+      flex-direction: column;
+      align-items: start;
+      width: 100%;
+      padding: 0;
+    }
+
+    header nav .fa{
+      align-self: start;
+    }
+  
+    header nav ul li {
+      margin: 10px 10px;
+    }
+  
+    header .fa {
+      display: block;
+      margin: 10px;
+      font-size: 22px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    header .divider{
+      display: none;
+    }
+  
+    header .logo {
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+    header .right-menu{
+      gap: 0px;
+    }
+
+    .logout2{
+      display: none;
+    }
+    .logout{
+      display: flex;
+    }
+ }

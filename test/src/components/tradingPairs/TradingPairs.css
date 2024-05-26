@@ -1,0 +1,296 @@
+.trading-pairs {
+  background: #20252B;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px #262932 solid;
+  flex: 1;
+}
+
+.trading-pairs .pairs {
+  display: flex;
+  gap: 25px;
+}
+
+.trading-pairs .crypt {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  gap: 10px;
+}
+
+.trading-pairs .top-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  gap: 20px;
+}
+
+.trading-pairs .top-info .green {
+  display: inline;
+  font-size: 18px;
+  color: #00C076;
+}
+
+.trading-pairs .Change {
+  align-items: center;
+}
+
+.trading-pairs .top-info2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  gap: 20px;
+}
+
+
+
+.trading-pairs .top-info2 .green {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #00C076;
+}
+
+.trading-pairs .top-info2 .white {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+
+.divider {
+  width: 1px;
+  height: 48px;
+  background-color: #EAF0FE;
+  opacity: 0.6;
+  display: block;
+  margin-left: 25px;
+}
+
+.top-info .divider {
+  width: 1px;
+  height: 48px;
+  background-color: #EAF0FE;
+  opacity: 0.6;
+  display: block;
+}
+
+.trading-pairs span {
+  margin-top: 0;
+  font-size: 20px;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.trading-pairs .fa {
+  display: inline;
+  font-size: 14px;
+  color: #FFFFFF;
+}
+
+.trading-pairs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.trading-pairs ul li {
+  padding: 10px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.trading-pairs ul li:last-child {
+  border-bottom: none;
+}
+
+.search-dropdown {
+  background-color: #1C2127;
+  border: 1px solid #262932;
+  border-radius: 8px;
+  position: absolute;
+  display: block;
+  z-index: 50;
+  height: 458px;
+  width: 444px;
+  padding: 15px;
+  left: 20px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #262932 #1C2127;
+}
+
+.search-dropdown .market{
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: left;
+  color: #FFFFFF;
+
+}
+
+.search{
+  position: relative;
+  /* width: ; */
+}
+
+.search-input{
+  width: 365px;
+  height: 32px;
+  background: #20252B;
+  border-radius: 8px;
+  border: 1px #373B3F solid;
+  padding: 13px 16px 13px 48px;
+  caret-color: #FFFFFF;
+  color: #fff;
+}
+
+.search-input::placeholder{
+  color: #FFFFFF;
+
+}
+
+ .search-icon{
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translate(0, -50%);
+  color: #FFFFFF;
+  /* rotate: -45deg; */
+}
+
+.filt {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 15px;
+}
+
+.filt p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: center;
+  color: #A7B1BC;
+  width: 40px;
+  height: 28px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filt p:hover {
+  background-color: #353945;
+  color: #FFFFFF;
+}
+
+
+.coin{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px; 
+  cursor: pointer;
+}
+
+.coin .left-coin{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+}
+
+.coin .left-coin p, 
+.coin .right-coin p{
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
+  color: #A7B1BC;
+}
+
+.coin .right-coin{
+  display: flex;
+  align-items: center;
+  gap: 40px;
+
+}
+
+.coin .right-coin .green{
+  color: #25C26E;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
+
+}
+
+.images{
+  position: relative;
+  width: 52px;
+}
+
+
+
+.images .usdt-img{
+  position: absolute;
+  left: 20px;
+  height: 28px;
+  width: 28px;
+}
+
+@media (max-width: 768px) {
+  .trading-pairs {
+    border-radius: 0px;
+  }
+  .trading-pairs .pairs {
+    display: block;
+    gap: 25px;
+  }
+
+  .top-info .divider {
+    display: none;
+  }
+
+  .divider{
+    width: 3px;
+    height: 48px;
+    background-color: #EAF0FE;
+    opacity: 0.6;
+    display: block;
+    margin-left: 25px;
+  }
+  .top-info2 {
+    margin-top: 20px;
+    width: auto;
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .info-div {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .search-dropdown{
+    width: 324px;
+    left: 10px;
+  }
+  .search-input{
+    width: 250px;
+  }
+}
